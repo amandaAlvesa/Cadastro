@@ -1,0 +1,5 @@
+package com.javaereact.Projeto.repository;
+
+public interface UserRepository {
+
+}

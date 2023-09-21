@@ -1,0 +1,5 @@
+package com.javaereact.Projeto.controller;
+
+public class UserController {
+
+}
