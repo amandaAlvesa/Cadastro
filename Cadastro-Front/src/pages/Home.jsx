@@ -3,17 +3,17 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function Home() {
+ 
 
-    useEffect(()=>{
-        loadUsers();
-    },[]);
-    
-    const [user,setUser]= useState=([]);
-    
     const loadUsers = async() =>{
-        const result = await axios.get("http://localhost:3434/users");
-        console.log(result);
+        const result = await axios.get('http://localhost:3434/users');
+        setUsers(result.data);
     }
+    useEffect(() =>{
+      loadUsers();
+    },[])
+
+    const [users,setUsers]= useState([]);
     
     return (
     <div className='container'>
@@ -21,30 +21,31 @@ export default function Home() {
         <table className="table border shadow">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Código</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Nome de Usuario</th>
+      <th scope="col">Email</th>
+      <th scope='col'>Ação</th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>@twitter</td>
-    </tr>
+    {
+        users.map((users,index) =>(
+            <tr>
+                <th scope="row" key={index}>{index+1}</th>
+                <td>{users.name}</td>
+                <td>{users.userName}</td>
+                <td>{users.email}</td>
+
+                <td>
+                    <button className='btn btn-outline-success mx-2' >Visualizar</button>
+                    <button className='btn btn-outline-warning mx-2' >Editar</button>
+                    <button className='btn btn-outline-danger mx-2' >Deletar</button>
+                </td>
+            </tr>
+        ))
+    }
+   
   </tbody>
 </table>
         </div>
