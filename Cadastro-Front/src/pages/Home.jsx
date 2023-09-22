@@ -9,6 +9,7 @@ export default function Home() {
         const result = await axios.get('http://localhost:3434/users');
         setUsers(result.data);
     }
+    
     useEffect(() =>{
       loadUsers();
     },[])

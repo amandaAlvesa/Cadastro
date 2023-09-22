@@ -14,7 +14,7 @@ function App() {
         <Router>
           <Navbar />
           <Routes>
-            <Route exact path='/' element={<Home />}/>
+            <Route exact path='/' element={<Home />}></Route>
             <Route exact path='/adduser' element={<AddUser />}></Route>
           </Routes>
         </Router>
