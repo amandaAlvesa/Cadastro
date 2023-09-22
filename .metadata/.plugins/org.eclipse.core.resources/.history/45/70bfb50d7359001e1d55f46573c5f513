@@ -1,0 +1,8 @@
+package com.javaereact.Projeto.model;
+
+public class Messages {
+
+	public String messages(String message) {
+		return message;
+	}
+}
